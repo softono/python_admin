@@ -1,0 +1,13 @@
+services:
+  python-admin-api:
+    build: .
+    image: next-python-admin-api
+    env_file:
+      - .env
+    ports:
+      - "${PORT:-4301}:${PORT:-4301}"
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
